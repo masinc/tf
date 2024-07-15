@@ -5,6 +5,11 @@ name: "Terraform Plan"
       - main
   workflow_dispatch: {}
 
+env:
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  CLOUDFLARE_EMAIL: ${{ secrets.CLOUDFLARE_EMAIL }}
+  TF_VAR_cloudflare_account_id: ${{ secrets.TF_VAR_cloudflare_account_id }}
+
 jobs:
   terraform:
     runs-on: ubuntu-latest
