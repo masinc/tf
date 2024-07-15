@@ -16,6 +16,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v1
+      - uses: terraform-linters/setup-tflint@v4
+
+      - name: Install versions
+        run: |
+          terraform --version
+          tflint --version
+
+      - name: lint
+        run: |
+          tflint --init
+          tflint -f compact
+
       - name: Terraform Init
         run: terraform init
 
