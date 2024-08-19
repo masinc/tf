@@ -18,8 +18,16 @@ resource "cloudflare_pages_project" "blog" {
   }
 
   build_config {
-    build_command = "hugo --gc --minify"
+    build_command = "hugo --gc --minify"    
     destination_dir = "public"
+  }
+
+  deployment_configs {
+    production {
+      environment_variables = {
+        HUGO_ENV = "production"
+      }
+    }
   }
 }
 
